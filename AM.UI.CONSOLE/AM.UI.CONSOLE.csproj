@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+s<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,11 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AM.Infrastructure\AM.Infrastructure.csproj" />
+    <ProjectReference Include="..\AM.ApplicationCore\AM.ApplicationCore.csproj" />
   </ItemGroup>
 
 </Project>
