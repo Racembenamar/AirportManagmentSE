@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,9 @@ namespace AM.ApplicationCore.Domain
         public Plane Plane { get; set; }
 
         public string AirlineLogo{ get; set; }
+
+        [ForeignKey("Plane")]
+        public int PlaneFK { get; set; }
 
         public ICollection<Passenger> Passengers { get; set; }
 
