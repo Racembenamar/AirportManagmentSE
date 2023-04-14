@@ -32,7 +32,11 @@ namespace AM.ApplicationCore.Domain
         [RegularExpression(@"^[0-9]{8}$")]
         public string TelNumber { get; set;}
 
+        public FullName FullName { get; set; }
+
         public ICollection<Flight> Flights { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
+
         public Passenger() { }
         public Passenger(DateTime birthDate, int passportNumber, string emailAddress, string firstName, string lastName, string telNumber, ICollection<Flight> flights)
         {
@@ -56,15 +60,30 @@ namespace AM.ApplicationCore.Domain
         }
 
 
-        public bool checkProfile (string firstName,string lastName)
+        /*public bool checkProfile (string firstName,string lastName)
         {
             return FirstName == firstName && LastName == lastName;
         }
         public bool checkProfile(string firstName, string lastName,string mail)
         {
             return FirstName == firstName && LastName == lastName && mail == EmailAddress;
-        }
+        }*/
+        public bool CheckProfile(string fistname, string lastname, string email = null)
+        {
+            if (email != null)
+            {
 
+                return fistname == FullName.FirstName && lastname == FullName.LastName && email == EmailAddress;
+            }
+            else
+            {
+                return fistname == FullName.FirstName && lastname == FullName.LastName;
+            }
+        }
+        public override string ToString()
+        {
+            return this.FullName.FirstName + " " + this.FullName.LastName;
+        }
         public virtual void PassengerType()
         {
             Console.WriteLine("I am a Passenger");

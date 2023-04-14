@@ -21,8 +21,31 @@ namespace AM.ApplicationCore.Services
             //    if (Flights[i].Destination == "destination")
             //      result.Add(Flights[i].FlightDate);
             //}
-            throw new NotImplementedException();
+            var queryLambda = Flights.Where(f => f.Destination == destination)
+                                     .Select(f => f.FlightDate);
+            return queryLambda.ToList();
         }
+        public IEnumerable<Flight> OrderedDurationFlights()
+        {
+            //var query = from flight in Flights
+            //            orderby flight.EstimatedDuration descending
+            //            select flight;
+            //return query;
+            var queryLambda = Flights.OrderByDescending(f => f.EstimatedDuration);
+            return queryLambda.ToList();
+        }
+        public IEnumerable<Traveller> SeniorTravellers(Flight flight)
+        {
+            //var query = from traveller in flight.Passengers.OfType<Traveller>()
+            //            orderby traveller.BirthDate
+            //            select traveller;
+            //return query.Take(3);
+            //var queryLambda = flight.Passengers.OfType<Traveller>().OrderBy(t => t.BirthDate)
+            //                .Select(t => t);
+            //return queryLambda.ToList();
+            return null;
+        }
+
 
         public void GetFlights(string filterType, string filterValue)
         {
@@ -134,6 +157,22 @@ namespace AM.ApplicationCore.Services
                 }
             };
             DurationAverageDel = DurationAverage;
+        }
+
+        public void DestinationGroupedFlights()
+        {
+            //var query = from flight in Flights
+            //            group flight by flight.Destination;
+            var queryLambda = Flights.GroupBy(f => f.Destination)
+                                    .Select(f => f);
+            foreach (var group in queryLambda)
+            {
+                Console.WriteLine("Destination" + " : " + group.Key);
+                foreach (var item in group)
+                {
+                    Console.WriteLine("Decollage" + " : " + item.FlightDate);
+                }
+            }
         }
     }
 }

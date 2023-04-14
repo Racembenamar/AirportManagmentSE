@@ -13,11 +13,11 @@ namespace AM.Infrastructure.Conf
     {
         public void Configure(EntityTypeBuilder<Plane> builder)
         {
-            builder.ToTable("MyPlanes"); 
+            builder.ToTable("Planes"); 
             builder.HasKey(p => p.PlaneId); 
 
             builder.Property(p => p.Capacity)
-                   .HasColumnName("PlaneCapacity"); 
+                   .HasColumnName("Capacity"); 
         }
     }
 }

@@ -25,17 +25,17 @@ namespace AM.ApplicationCore.Domain
 
         public Plane Plane { get; set; }
 
-        public string AirlineLogo{ get; set; }
 
         [ForeignKey("Plane")]
-        public int PlaneFK { get; set; }
+        public int PlaneFK{ get; set; }
 
         public ICollection<Passenger> Passengers { get; set; }
 
         public override string ToString()
         {
             return this.Destination+" "+this.Departure;
-        }   
+        }
+        public ICollection<Ticket> Tickets { get; set; }
         public Flight() { }
         public Flight(string destination, string departure, DateTime flightDate, DateTime effectiveArrival, int estimatedDuration, int flighID, Plane plane, ICollection<Passenger> passengers)
         {

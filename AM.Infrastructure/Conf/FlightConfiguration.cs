@@ -22,7 +22,8 @@ namespace AM.Infrastructure.Conf
 
             builder.HasOne(f => f.Plane)
                    .WithMany(p => p.Flights)
-                   .HasForeignKey(f => f.PlaneFK);
+                   .HasForeignKey(f => f.PlaneFK)
+                   .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }

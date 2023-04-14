@@ -13,7 +13,7 @@ namespace AM.ApplicationCore.Domain
         public string Function { get; set; }
 
         [DataType(DataType.Currency)]
-        public double Salary;
+        public double Salary { get; set; }
         public override void PassengerType()
         {
             base.PassengerType();
